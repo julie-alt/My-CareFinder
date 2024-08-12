@@ -28,10 +28,7 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleLogout = async () => {
-    await signOut(auth);
-    router.push("/login");
-  };
+ 
 
   return (
     <Box
@@ -71,7 +68,7 @@ const Navbar: React.FC = () => {
           <Link href="/login" passHref>
             <Button>Log in</Button>
           </Link>
-          <Button onClick={handleLogout}>Logout</Button>
+        
         </ButtonGroup>
       </Flex>
 
@@ -132,9 +129,7 @@ const Navbar: React.FC = () => {
                   Log in
                 </Button>
               </Link>
-              <Button onClick={handleLogout} colorScheme="gray">
-                Logout
-              </Button>
+              
             </VStack>
           </DrawerBody>
         </DrawerContent>

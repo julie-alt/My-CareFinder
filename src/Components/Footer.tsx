@@ -1,6 +1,6 @@
 // components/Footer.tsx
 import React from "react";
-import { Box, Text, Link, Stack } from "@chakra-ui/react";
+import { Box, Text, Link, Stack, Button } from "@chakra-ui/react";
 
 const Footer: React.FC = () => {
   return (
@@ -13,8 +13,11 @@ const Footer: React.FC = () => {
       position="relative"
       bottom="0"
       width="100%"
-    >
-      <Stack direction="row" spacing={4} justify="center" mb={4}>
+     >
+      <Button variant="link" color="teal.500" mb={6}>
+       Need help? Contact us at support@carefinder.com
+      </Button>
+      <Stack direction="row" spacing={4} justify="center" mb={6}>
         <Link href="/" color="teal.500">
           Home
         </Link>

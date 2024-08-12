@@ -16,7 +16,10 @@ const theme = extendTheme({
       900: '#000000',  // Black
     },
   },
-  // You can also customize other parts of the theme here
+  fonts: {
+    heading: 'Lato, sans-serif',
+    body: 'Poppins sans-serif'
+  }
 });
 
 export default theme;

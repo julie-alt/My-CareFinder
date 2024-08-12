@@ -8,45 +8,10 @@ import {
   FaHandsHelping,
 } from "react-icons/fa";
 
-const About: React.FC = () => {
+const Mission: React.FC = () => {
   return (
     <Box>
-      <Box
-        id="about-us"
-        bg="#ffffff"
-        py={10}
-        px={5}
-        textAlign="left"
-        alignItems="center"
-        justifyContent="space-between"
-        flexDirection={{ base: "column", md: "row" }}
-        display="flex"
-      >
-        <Box flex="1" pr={{ base: 0, md: 8 }} px={{ base: 4, md: 8 }}>
-          <Image
-            src="/About.png"
-            alt="About us"
-            maxW={{ base: "100%", md: "100%" }} // Full width on small screens, half width on larger screens
-            borderRadius="md"
-          />
-        </Box>
-        <Box flex="1" pl={{ base: 0, md: 8 }} color="">
-          <Heading as="h2" size="xl" mb={4}>
-            <FaInfoCircle
-              style={{ display: "inline-block", marginRight: "8px" }}
-            />
-            About Us
-          </Heading>
-          <Text fontSize="lg" mb={4}>
-            At CareFinder, our mission is to simplify the process of finding
-            quality healthcare. We believe in providing our users with accurate
-            and up-to-date information on hospitals, clinics, and other
-            healthcare facilities in their area. Our platform is designed to be
-            user-friendly and accessible, ensuring that everyone can find the
-            care they need quickly and easily.
-          </Text>
-        </Box>
-      </Box>
+     
 
       {/* Our Vision Section */}
       <Box>
@@ -97,4 +62,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About;
+export default Mission;

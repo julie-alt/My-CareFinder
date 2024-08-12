@@ -3,13 +3,13 @@ import React from "react";
 import Navbar from "../Components/NavBar";
 import Header from "../Components/Header";
 import Services from "../Components/Services";
-import About from "../Components/AboutVision";
-import TeamMission from "../Components/TeamMission";
+import Mission from "../Components/MissionSection";
+import About from "../Components/AboutUs";
 import Contact from "../Components/Contact";
 import {
   ChakraProvider,
 } from "@chakra-ui/react";
-import theme from "../theme/index"
+import theme from "../theme/index";
 import Footer from "../Components/Footer";
 const Home: React.FC = () => {
   return (
@@ -21,10 +21,8 @@ const Home: React.FC = () => {
          <Header />
          <Services />
          <About />
-         <TeamMission />
+         <Mission />
          <Contact />
-
-        
        <Footer />
       </div>
     </ChakraProvider>

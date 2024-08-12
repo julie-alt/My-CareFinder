@@ -1,13 +1,7 @@
 import React from "react";
-import { Box, Heading, Text, useColorModeValue, Image } from "@chakra-ui/react";
-import {
-  FaHospital,
-  FaInfoCircle,
-  FaUsers,
-  FaBullseye,
-  FaHandsHelping,
-} from "react-icons/fa";
-const TeamMission: React.FC = () => {
+import { Box, Heading, Text } from "@chakra-ui/react";
+import {FaUsers} from "react-icons/fa";
+const About: React.FC = () => {
   return (
     <Box>
       <Box
@@ -27,17 +21,19 @@ const TeamMission: React.FC = () => {
       >
         <Heading as="h2" size="xl" mb={4}>
           <FaUsers style={{ display: "inline-block", marginRight: "8px" }} />
-          Our Team
+          About Us
         </Heading>
         <Text fontSize="lg">
-          CareFinder is powered by a passionate team of healthcare enthusiasts,
-          technologists, and customer service experts. We are dedicated to
-          providing exceptional service and ensuring that you have a seamless
-          experience every time you visit our platform.
+        At CareFinder, our mission is to simplify the process of finding
+            quality healthcare. We believe in providing our users with accurate
+            and up-to-date information on hospitals, clinics, and other
+            healthcare facilities in their area. Our platform is designed to be
+            user-friendly and accessible, ensuring that everyone can find the
+            care they need quickly and easily.
         </Text>
       </Box>
     </Box>
   );
 };
 
-export default TeamMission;
+export default About;

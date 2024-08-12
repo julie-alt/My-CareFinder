@@ -35,7 +35,7 @@ const Services: React.FC = () => {
         </Box>
 
         {/* Right Content Section */}
-        <Box flex="1" pl={{ base: 0, md: 8 }} color="white">
+        <Box flex="1" pl={{ base: 0, md: 8 }} color="black">
           <Heading as="h2" size="lg" mb={6}>
             <FaHandsHelping
               style={{ display: "inline-block", marginRight: "8px" }}

@@ -1,6 +1,6 @@
 // src/components/Header.tsx
 import React, {useEffect} from "react";
-import { Box, Heading, Text, Flex } from "@chakra-ui/react";
+import { Box, Heading, Text, Flex, HStack, Link, Button } from "@chakra-ui/react";
 
 
 const Header: React.FC = () => {
@@ -29,6 +29,19 @@ const Header: React.FC = () => {
       <Text fontSize="lg" mb={4}>
       Making Healthcare Accessibility Easy
       </Text>
+      <Text fontSize="md" mb={4} color="white">
+      Your trusted partner in finding the best healthcare providers.
+    </Text>
+<HStack spacing={4}>
+<Link  href="/signup" color="white">
+  <Button colorScheme="gray">
+
+    Find Providers Near You
+    </Button>
+    </Link>
+  
+</HStack>
+
     </Box>
 
   

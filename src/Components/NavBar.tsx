@@ -1,18 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
 import Link from "next/link";
 import logo from "../assets/carefinder.png";
 import {
   Flex,
   Spacer,
   Box,
-  Heading,
   ButtonGroup,
   Button,
-  useColorModeValue,
   useDisclosure,
   IconButton,
   Drawer,
@@ -28,16 +24,8 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
- 
-
   return (
-    <Box
-    
-      boxShadow="sm"
-      position="fixed"
-      width="100%"
-      zIndex="1000"
-    >
+    <Box boxShadow="sm" position="fixed" width="100%" zIndex="1000">
       <Flex
         alignItems="center"
         gap="2"
@@ -51,7 +39,7 @@ const Navbar: React.FC = () => {
         <Spacer />
         <ButtonGroup spacing={4}>
           <Link href="/" passHref>
-            <Button variant="ghost" >Home</Button>
+            <Button variant="ghost">Home</Button>
           </Link>
           <Link href="#services" passHref>
             <Button variant="ghost">Services</Button>
@@ -59,7 +47,7 @@ const Navbar: React.FC = () => {
           <Link href="#about-us" passHref>
             <Button variant="ghost">About Us</Button>
           </Link>
-          <Link href="/contactUs" passHref>
+          <Link href="#contact" passHref>
             <Button variant="ghost">Contact Us</Button>
           </Link>
           <Link href="/signup" passHref>
@@ -68,7 +56,6 @@ const Navbar: React.FC = () => {
           <Link href="/login" passHref>
             <Button>Log in</Button>
           </Link>
-        
         </ButtonGroup>
       </Flex>
 
@@ -114,9 +101,9 @@ const Navbar: React.FC = () => {
                   About Us
                 </Button>
               </Link>
-              <Link href="/contactUs" passHref>
+              <Link href="#vision" passHref>
                 <Button colorScheme="gray" variant="ghost" onClick={onClose}>
-                  Contact Us
+                  Vision and Mission
                 </Button>
               </Link>
               <Link href="/signup" passHref>
@@ -129,7 +116,6 @@ const Navbar: React.FC = () => {
                   Log in
                 </Button>
               </Link>
-              
             </VStack>
           </DrawerBody>
         </DrawerContent>

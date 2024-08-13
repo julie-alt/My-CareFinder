@@ -14,7 +14,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Stack,
   Text,
   Heading,
   List,
@@ -22,33 +21,29 @@ import {
   Divider,
   VStack,
   HStack,
-  useToast,
   Flex,
   Icon,
-  
 } from "@chakra-ui/react";
-import {MdLocationOn, MdPhone} from "react-icons/md";
+import { MdLocationOn, MdPhone } from "react-icons/md";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import theme from "../theme/index";
 import Image from "next/image";
 import Link from "next/link";
- 
-import { signOut } from 'firebase/auth';
+
+import { signOut } from "firebase/auth";
 
 import logo from "../assets/carefinder.png";
-
 
 const Header: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   const router = useRouter();
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      router.push('/login'); // Redirect to login page after logout
+      router.push("/login");
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     }
   };
-
 
   return (
     <Flex
@@ -61,21 +56,21 @@ const Header: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
       borderBottom="1px solid rgba(255,255,255,0.2)"
     >
       <HStack spacing={4}>
-      <Image src={logo} alt="CareFinder Logo" width={150} />
-        
+        <Image src={logo} alt="CareFinder Logo" width={150} />
       </HStack>
       <HStack>
-      <Text fontSize="xl" fontWeight="bold">Dashboard</Text>
+        <Text fontSize="xl" fontWeight="bold">
+          Dashboard
+        </Text>
       </HStack>
-      
-       
+
       <HStack spacing={4}>
-      <Link href="/" passHref>
-            <Button variant="outline" >
+        <Link href="/" passHref>
+          <Button variant="outline">
             <Icon as={FaHome} mr={2} />
-              Home
-              </Button>
-          </Link>
+            Home
+          </Button>
+        </Link>
         <Button variant="outline" colorScheme="red" onClick={handleLogout}>
           Logout
           <Icon as={FaSignOutAlt} ml={2} />
@@ -85,10 +80,7 @@ const Header: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   );
 };
 
-
 const Dashboard: React.FC = () => {
-
-
   const [searchQuery, setSearchQuery] = useState("");
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
   const [loading, setLoading] = useState(false);
@@ -136,15 +128,17 @@ const Dashboard: React.FC = () => {
         phone: item.phone,
       }));
 
-      
       const query = searchQuery.toLowerCase();
-    const filteredHospitals = endpointData.data.filter((hospital: any) => {
-      return (
-        (typeof hospital.name === 'string' && hospital.name.toLowerCase().includes(query)) ||
-        (typeof hospital.state === 'string' && hospital.state.toLowerCase().includes(query)) ||
-        (typeof hospital.address === 'string' && hospital.address.toLowerCase().includes(query))
-      );
-    });
+      const filteredHospitals = endpointData.data.filter((hospital: any) => {
+        return (
+          (typeof hospital.name === "string" &&
+            hospital.name.toLowerCase().includes(query)) ||
+          (typeof hospital.state === "string" &&
+            hospital.state.toLowerCase().includes(query)) ||
+          (typeof hospital.address === "string" &&
+            hospital.address.toLowerCase().includes(query))
+        );
+      });
       setHospitals(filteredHospitals || []);
     } catch (err) {
       if (err instanceof Error) {
@@ -173,119 +167,124 @@ const Dashboard: React.FC = () => {
   };
 
   const handleLogout = () => {
-    auth.signOut().then(() => {
-      window.location.href = '/login'; // Redirect to login page after logout
-    }).catch((error) => {
-      console.error("Logout Error:", error);
-    });
+    auth
+      .signOut()
+      .then(() => {
+        window.location.href = "/login"; // Redirect to login page after logout
+      })
+      .catch((error) => {
+        console.error("Logout Error:", error);
+      });
   };
- 
 
   return (
     <ProtectedRoute>
-     <ChakraProvider theme={theme}>
-     <Flex direction="column" minHeight="100vh" bg="gray.50">
-     <Header onLogout={handleLogout} />
-     <Flex
-        minHeight="100vh"
-        align="center"
-        justify="center"
-        p={4}
-        bg="gray.50"
-      >
-        <Box
-          w="100%"
-          maxW="4xl"
-          bg="white"
-          p={8}
-          boxShadow="lg"
-          borderRadius="md"
-        >
-          {username && (
-            <Heading as="h2" size="lg" mb={6} textAlign="center" color="gray.600">
-              Welcome, {username}!
-            </Heading>
-          )}
-          
-           
-          
-          <VStack spacing={4} mb={4} align="stretch">
-            <FormControl>
-              <FormLabel textAlign="center">Search for Hospitals</FormLabel>
-              <Flex justify="center">
-                <Input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Enter your area"
-                  maxW="400px" // Set a maximum width for the input
-                  w="full"
-                  borderColor="gray.300"
-                  focusBorderColor="gray.400"
+      <ChakraProvider theme={theme}>
+        <Flex direction="column" minHeight="100vh" bg="gray.50">
+          <Header onLogout={handleLogout} />
+          <Flex
+            minHeight="100vh"
+            align="center"
+            justify="center"
+            p={4}
+            bg="gray.50"
+          >
+            <Box
+              w="100%"
+              maxW="4xl"
+              bg="white"
+              p={8}
+              boxShadow="lg"
+              borderRadius="md"
+            >
+              {username && (
+                <Heading
+                  as="h2"
+                  size="lg"
+                  mb={6}
+                  textAlign="center"
+                  color="gray.600"
+                >
+                  Welcome, {username}!
+                </Heading>
+              )}
+
+              <VStack spacing={4} mb={4} align="stretch">
+                <FormControl>
+                  <FormLabel textAlign="center">Search for Hospitals</FormLabel>
+                  <Flex justify="center">
+                    <Input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Enter your area"
+                      maxW="400px" // Set a maximum width for the input
+                      w="full"
+                      borderColor="gray.300"
+                      focusBorderColor="gray.400"
+                    />
+                  </Flex>
+                </FormControl>
+                <HStack spacing={4} justify="center">
+                  <Button
+                    colorScheme="gray"
+                    onClick={handleSearch}
+                    isLoading={loading}
+                  >
+                    {loading ? "Searching..." : "Search"}
+                  </Button>
+                  <Button variant="outline" onClick={clearList}>
+                    Clear List
+                  </Button>
+                </HStack>
+              </VStack>
+              {error && (
+                <Text color="red.500" mb={4} textAlign="center">
+                  {error}
+                </Text>
+              )}
+              {hospitals.length > 0 && (
+                <Box mb={6}>
+                  <HStack spacing={4} justify="center">
+                    <ExportButton data={hospitals} />
+                    <ShareButton data={hospitals} />
+                  </HStack>
+                </Box>
+              )}
+              <List spacing={4}>
+                {hospitals.map((hospital, index) => (
+                  <ListItem key={index} bg="gray.50" p={4} borderRadius="md">
+                    <Heading as="h2" size="md">
+                      {hospital.name}
+                    </Heading>
+                    <HStack spacing={2} mb={1}>
+                      <Icon as={MdLocationOn} boxSize={5} color="teal.500" />
+                      <Text>{hospital.address}</Text>
+                    </HStack>
+
+                    <Text>{hospital.email}</Text>
+
+                    <HStack spacing={2}>
+                      <Icon as={MdPhone} boxSize={5} color="teal.500" />
+                      <Text>{hospital.phone_number}</Text>
+                    </HStack>
+                  </ListItem>
+                ))}
+              </List>
+              <Divider my={6} />
+              <Button onClick={() => setShowEditor(!showEditor)} mb={4}>
+                {showEditor ? "Hide Editor" : "Show Editor"}
+              </Button>
+              {showEditor && (
+                <MarkdownEditor
+                  onSave={handleSaveContent}
+                  onDelete={handleDeleteContent}
                 />
-              </Flex>
-            </FormControl>
-            <HStack spacing={4} justify="center">
-              <Button
-                colorScheme="gray"
-                onClick={handleSearch}
-                isLoading={loading}
-              >
-                {loading ? "Searching..." : "Search"}
-              </Button>
-              <Button variant="outline" onClick={clearList}>
-                Clear List
-              </Button>
-            </HStack>
-          </VStack>
-          {error && (
-            <Text color="red.500" mb={4} textAlign="center">
-              {error}
-            </Text>
-        )}
-        {hospitals.length > 0 && (
-          <Box mb={6}>
-            <HStack spacing={4} justify="center">
-              <ExportButton data={hospitals} />
-              <ShareButton data={hospitals} />
-            </HStack>
-          </Box>
-        )}
-        <List spacing={4}>
-          {hospitals.map((hospital, index) => (
-            <ListItem key={index} bg="gray.50" p={4} borderRadius="md">
-              <Heading as="h2" size="md">
-                {hospital.name}
-              </Heading>
-              <HStack spacing={2} mb={1}>
-            <Icon as={MdLocationOn} boxSize={5} color="teal.500" />
-            <Text>{hospital.address}</Text>
-          </HStack>
-          
-            
-            <Text>{hospital.email}</Text>
-            
-            <HStack spacing={2}>
-            <Icon as={MdPhone} boxSize={5} color="teal.500" />
-            <Text>{hospital.phone_number}</Text>
-          </HStack>
-            </ListItem>
-          ))}
-        </List>
-        <Divider my={6} />
-        <Button onClick={() => setShowEditor(!showEditor)} mb={4}>
-          {showEditor ? "Hide Editor" : "Show Editor"}
-        </Button>
-        {showEditor && (
-          <MarkdownEditor
-            onSave={handleSaveContent}
-            onDelete={handleDeleteContent}
-          />
-        )}
-      </Box>
-      </Flex>
-      </Flex>
-     </ChakraProvider>
+              )}
+            </Box>
+          </Flex>
+        </Flex>
+      </ChakraProvider>
     </ProtectedRoute>
   );
 };

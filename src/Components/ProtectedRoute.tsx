@@ -1,7 +1,6 @@
-// src/components/ProtectedRoute.tsx
-import { useRouter } from 'next/router';
-import React, { ReactNode, useEffect } from 'react';
-import useAuth from '@/hooks/useAuth';
+import { useRouter } from "next/router";
+import React, { ReactNode, useEffect } from "react";
+import useAuth from "@/hooks/useAuth";
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -13,12 +12,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/login');
+      router.push("/login");
     }
   }, [user, loading, router]);
 
   if (loading || !user) {
-    return <div>Loading...</div>; // Show a loading spinner or some placeholder
+    return <div>Loading...</div>;
   }
 
   return <>{children}</>;

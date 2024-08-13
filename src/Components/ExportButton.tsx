@@ -1,8 +1,7 @@
-// src/Components/ExportButton.tsx
-import React from 'react';
-import { exportToCSV } from '@/Utilities/exportCSV';
-import { Hospital } from '@/types';
-import { Button } from '@chakra-ui/react';
+import React from "react";
+import { exportToCSV } from "@/Utilities/exportCSV";
+import { Hospital } from "@/types";
+import { Button } from "@chakra-ui/react";
 
 interface ExportButtonProps {
   data: Hospital[];
@@ -14,13 +13,13 @@ const ExportButton: React.FC<ExportButtonProps> = ({ data }) => {
       const csvData = data.map((hospital: Hospital) => [
         hospital.name,
         hospital.address,
-        hospital.email || '',
-        hospital.phone_number || '',
+        hospital.email || "",
+        hospital.phone_number || "",
       ]);
       const downloadURL = await exportToCSV(csvData);
-      window.open(downloadURL, '_blank');
+      window.open(downloadURL, "_blank");
     } catch (error) {
-      console.error('Error exporting the CSV:', error);
+      console.error("Error exporting the CSV:", error);
     }
   };
 

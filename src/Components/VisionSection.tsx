@@ -1,21 +1,13 @@
 import React from "react";
-import { Box, Heading, Text, useColorModeValue, Image } from "@chakra-ui/react";
-import {
-  FaHospital,
-  FaInfoCircle,
-  FaUsers,
-  FaBullseye,
-  FaHandsHelping,
-} from "react-icons/fa";
+import { Box, Heading, Text } from "@chakra-ui/react";
+import { FaHospital, FaBullseye } from "react-icons/fa";
 
 const Mission: React.FC = () => {
   return (
     <Box>
-     
-
-      {/* Our Vision Section */}
       <Box>
         <Box
+          id="vision"
           bgImage="linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('/Health Dice.png')"
           bgPosition="center"
           bgSize="cover"
@@ -46,17 +38,18 @@ const Mission: React.FC = () => {
             facilities, by providing a comprehensive and easy-to-use platform.
           </Text>
           <Heading as="h2" size="l" mb={4}>
-          <FaHospital style={{ display: "inline-block", marginRight: "8px" }} />
-          Our Mission
-        </Heading>
-        <Text fontSize="md">
-          We are committed to connecting you with the best healthcare providers
-          in your area. Whether you are looking for a general practitioner, a
-          specialist, or urgent care, CareFinder is here to help you navigate
-          the healthcare landscape with confidence.
-        </Text>
+            <FaHospital
+              style={{ display: "inline-block", marginRight: "8px" }}
+            />
+            Our Mission
+          </Heading>
+          <Text fontSize="md">
+            We are committed to connecting you with the best healthcare
+            providers in your area. Whether you are looking for a general
+            practitioner, a specialist, or urgent care, CareFinder is here to
+            help you navigate the healthcare landscape with confidence.
+          </Text>
         </Box>
-        
       </Box>
     </Box>
   );

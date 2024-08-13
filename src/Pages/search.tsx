@@ -1,25 +1,23 @@
-// src/pages/search.tsx
-import React, { useState } from 'react';
-import SearchBar from '../Components/SearchBar';
-import HospitalList from '../Components/HospitalList';
-import ProtectedRoute from '../Components/ProtectedRoute';
-import { fetchHospitals } from '@/Utilities/mapApi';
-import { Hospital } from '@/types';
-
+import React, { useState } from "react";
+import SearchBar from "../Components/SearchBar";
+import HospitalList from "../Components/HospitalList";
+import ProtectedRoute from "../Components/ProtectedRoute";
+import { fetchHospitals } from "@/Utilities/mapApi";
+import { Hospital } from "@/types";
 
 const SearchPage: React.FC = () => {
   const [hospitals, setHospitals] = useState<Hospital[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleSearch = async (query: string) => {
     setLoading(true);
-    setError('');
+    setError("");
     try {
       const data = await fetchHospitals(query);
       setHospitals(data);
     } catch (err) {
-      setError('Failed to fetch hospitals');
+      setError("Failed to fetch hospitals");
     } finally {
       setLoading(false);
     }

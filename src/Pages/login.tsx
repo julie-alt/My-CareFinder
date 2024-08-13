@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { auth, db } from "../firebase";
 import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
-
 import {
   ChakraProvider,
   Box,
@@ -16,16 +19,17 @@ import {
   Text,
   Flex,
   Icon,
-  Link
+  Link,
 } from "@chakra-ui/react";
-import theme from "../theme/index"
-import { FaGoogle } from 'react-icons/fa';
+import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import theme from "../theme/index";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -69,7 +73,6 @@ const Login: React.FC = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Redirect or handle successful Google sign-in
       router.push("/dashboard");
     } catch (err) {
       console.error("Error with Google sign-in:", err);
@@ -82,86 +85,104 @@ const Login: React.FC = () => {
   return (
     <ChakraProvider theme={theme}>
       <Flex
-      minH="100vh"
-      align="center"
-      justify="center"
-      bgGradient="linear(to-r, gray.300, gray.100)"
-      py={12}
-      px={6}
-    >
-      <Box
-        bg="white"
-        p={8}
-        borderRadius="md"
-        boxShadow="md"
-        maxWidth="lg"
-        w="full"
-        borderColor="gray.200"
+        minH="100vh"
+        align="center"
+        justify="center"
+        bgGradient="linear(to-r, gray.300, gray.100)"
+        py={12}
+        px={6}
       >
-        <Heading as="h1" size="xl" mb={6} textAlign="center"  color="gray.600">
-          Log In
-        </Heading>
-        <form onSubmit={handleLogin}>
-          <Stack spacing={4}>
-            <FormControl isRequired>
-              <FormLabel>Username</FormLabel>
-              <Input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter your username"
-                borderColor="gray.300"
-                focusBorderColor="gray.400"
-              />
-            </FormControl>
+        <Box
+          bg="white"
+          p={8}
+          borderRadius="md"
+          boxShadow="md"
+          maxWidth="lg"
+          w="full"
+          borderColor="gray.200"
+        >
+          <Heading as="h1" size="xl" mb={6} textAlign="center" color="gray.600">
+            Log In
+          </Heading>
+          <form onSubmit={handleLogin}>
+            <Stack spacing={4}>
+              <FormControl isRequired>
+                <FormLabel>Username</FormLabel>
+                <Input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your username"
+                  borderColor="gray.300"
+                  focusBorderColor="gray.400"
+                />
+              </FormControl>
 
-            <FormControl isRequired>
-              <FormLabel>Password</FormLabel>
-              <Input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                borderColor="gray.300"
-                focusBorderColor="gray.400"
-              />
-            </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Password</FormLabel>
+                <Flex position="relative">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    borderColor="gray.300"
+                    focusBorderColor="gray.400"
+                  />
+                  <Icon
+                    as={showPassword ? FaEyeSlash : FaEye}
+                    position="absolute"
+                    right="0.5rem"
+                    top="50%"
+                    transform="translateY(-50%)"
+                    cursor="pointer"
+                    onClick={() => setShowPassword(!showPassword)}
+                    color="gray.500"
+                    boxSize={5}
+                    zIndex={1}
+                  />
+                </Flex>
+              </FormControl>
 
-            <Button
-              type="submit"
-              colorScheme="gray"
-              isLoading={loading}
-              width="full"
-              borderRadius="md"
-            >
-              Log In
-            </Button>
-            <Text textAlign="center" mt={4}>
-              Don&apos;t have an account?{" "}
-              <Link color="gray.400" href="/signup" >
-                Sign Up
-              </Link>
-            </Text>
-            <Text textAlign="center" mt={4}>
-              Or
-            </Text>
-            <Button
-              colorScheme="red"
-              width="full"
-              mt={4}
-              onClick={handleGoogleSignIn}
-              isLoading={loading}
-              borderRadius="md"
-              leftIcon={<Icon as={FaGoogle} />}
-            >
-              Login with Google
-            </Button>
-           
-            {error && <Text color="red.500" textAlign="center" mt={4}>{error}</Text>}
-          </Stack>
-        </form>
-      </Box>
-    </Flex>
+              {error && (
+                <Text color="red.500" textAlign="center" mt={4}>
+                  {error}
+                </Text>
+              )}
+
+              <Button
+                type="submit"
+                colorScheme="gray"
+                isLoading={loading}
+                width="full"
+                borderRadius="md"
+              >
+                Log In
+              </Button>
+              <Text textAlign="center" mt={4}>
+                Don&apos;t have an account?{" "}
+                <Link color="gray.400" href="/signup">
+                  Sign Up
+                </Link>
+              </Text>
+              <Text textAlign="center" mt={4}>
+                Or
+              </Text>
+              <Button
+                colorScheme="red"
+                width="full"
+                mt={4}
+                onClick={handleGoogleSignIn}
+                isLoading={loading}
+                borderRadius="md"
+                leftIcon={<Icon as={FaGoogle} />}
+              >
+                Login with Google
+              </Button>
+            </Stack>
+          </form>
+        </Box>
+      </Flex>
     </ChakraProvider>
   );
 };

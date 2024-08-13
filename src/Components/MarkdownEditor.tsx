@@ -1,9 +1,18 @@
-// src/components/MarkdownEditor.tsx
-import React, { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from '../firebase';
-import { Box, Button, FormControl, FormLabel, Input, Textarea, Stack, Text, useToast } from "@chakra-ui/react";
+import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Textarea,
+  Stack,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import { BsSave, BsTrash, BsImage } from "react-icons/bs";
 
 interface MarkdownEditorProps {
@@ -11,31 +20,31 @@ interface MarkdownEditorProps {
   onDelete?: () => void;
 }
 
-const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ onSave, onDelete }) => {
-  const [content, setContent] = useState<string>('');
-  const [hospitalName, setHospitalName] = useState<string>('');
-  const [address, setAddress] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
+const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
+  onSave,
+  onDelete,
+}) => {
+  const [content, setContent] = useState<string>("");
+  const [hospitalName, setHospitalName] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState<string>("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const toast = useToast();
 
   const handleSave = async () => {
     if (!hospitalName || !address || !email || !phone || !content) {
-      setError('Please fill in all fields.');
+      setError("Please fill in all fields.");
       return;
-    };
-    
+    }
 
     setLoading(true);
-    setError('');
-
-    
+    setError("");
 
     try {
-      await addDoc(collection(db, 'hospitals'), {
+      await addDoc(collection(db, "hospitals"), {
         name: hospitalName,
         address,
         email,
@@ -47,25 +56,25 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ onSave, onDelete }) => 
         onSave(content);
       }
 
-      setHospitalName('');
-      setAddress('');
-      setEmail('');
-      setPhone('');
-      setContent('');
+      setHospitalName("");
+      setAddress("");
+      setEmail("");
+      setPhone("");
+      setContent("");
     } catch (err) {
-      setError('Error saving content. Please try again.');
-      console.error('Error saving content:', err);
+      setError("Error saving content. Please try again.");
+      console.error("Error saving content:", err);
     } finally {
       setLoading(false);
     }
   };
 
   const handleDelete = () => {
-    setContent('');
-    setHospitalName('');
-    setAddress('');
-    setEmail('');
-    setPhone('');
+    setContent("");
+    setHospitalName("");
+    setAddress("");
+    setEmail("");
+    setPhone("");
     if (onDelete) {
       onDelete();
     }
@@ -138,7 +147,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ onSave, onDelete }) => 
         <Button colorScheme="gray" onClick={handleSave}>
           Save Content
         </Button>
-        <Button variant="outline" onClick={handleDelete} colorScheme='red'>
+        <Button variant="outline" onClick={handleDelete} colorScheme="red">
           Delete Note
         </Button>
         <Input
@@ -148,11 +157,18 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({ onSave, onDelete }) => 
           display="none"
           id="imageUpload"
         />
-        <Button colorScheme="blue" onClick={() => document.getElementById('imageUpload')?.click()}>
+        <Button
+          colorScheme="blue"
+          onClick={() => document.getElementById("imageUpload")?.click()}
+        >
           Upload Image
         </Button>
       </Stack>
-      {error && <Text color="red.500" mt={4}>{error}</Text>}
+      {error && (
+        <Text color="red.500" mt={4}>
+          {error}
+        </Text>
+      )}
       <Box mt={6}>
         <Text fontSize="lg" fontWeight="bold" mb={2}>
           Preview

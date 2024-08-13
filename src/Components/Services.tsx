@@ -1,41 +1,32 @@
-// src/components/Services.tsx
 import React from "react";
-import { Box, Heading, Text, useColorModeValue, Image } from "@chakra-ui/react";
-import {
-  FaHospital,
-  FaInfoCircle,
-  FaUsers,
-  FaBullseye,
-  FaHandsHelping,
-} from "react-icons/fa";
+import { Box, Heading, Text, Image, List, ListItem } from "@chakra-ui/react";
+import { FaHandsHelping } from "react-icons/fa";
+
 const Services: React.FC = () => {
   return (
     <Box>
-      {/* Services Section */}
-
       <Box
         id="services"
         bg="linear-gradient(to right, #ffffff, #c7c3c3)"
         py={10}
         px={5}
-        textAlign="left" // Change text alignment to left for better readability
+        textAlign="left"
+        display="flex"
+        flexDirection={{ base: "column", md: "row" }}
         alignItems="center"
         justifyContent="space-between"
-        flexDirection={{ base: "column", md: "row" }}
-        display="flex" // Use flex display to create a horizontal layout
-        >
-        {/* Left Image Section */}
+      >
         <Box flex="1" pr={{ base: 0, md: 8 }} px={{ base: 4, md: 8 }}>
           <Image
-            src="/HServices.png" // Replace with your image path
+            src="/HServices.png"
             alt="Healthcare Services"
-            maxW={{ base: "100%", md: "100%" }} // Full width on small screens, half width on larger screens
+            maxW={{ base: "100%", md: "100%" }}
             borderRadius="md"
           />
         </Box>
 
         {/* Right Content Section */}
-        <Box flex="1" pl={{ base: 0, md: 8 }} color="black">
+        <Box flex="1" pl={{ base: 0, md: 8 }} color="#2C2626">
           <Heading as="h2" size="lg" mb={6}>
             <FaHandsHelping
               style={{ display: "inline-block", marginRight: "8px" }}
@@ -46,21 +37,29 @@ const Services: React.FC = () => {
             We offer a variety of services to help you find the best healthcare
             options:
           </Text>
-          <Box>
-            <Text mb={4}>- Hospital Search</Text>
-            <Text mb={4}>- Verified Reviews</Text>
-            <Text mb={4}>- Detailed Hospital Information</Text>
-          </Box>
+          <List spacing={3} fontSize="md">
+            <ListItem>
+              <Text as="span" fontWeight="bold">
+                Hospital Search:
+              </Text>{" "}
+              Find hospitals near you easily.
+            </ListItem>
+            <ListItem>
+              <Text as="span" fontWeight="bold">
+                Verified Reviews:
+              </Text>{" "}
+              Read authentic reviews from other users.
+            </ListItem>
+            <ListItem>
+              <Text as="span" fontWeight="bold">
+                Detailed Information:
+              </Text>{" "}
+              Get comprehensive details about hospitals.
+            </ListItem>
+          </List>
         </Box>
       </Box>
-
-     
-      
-
-      
-        
-      </Box>
-  
+    </Box>
   );
 };
 

@@ -1,6 +1,5 @@
-
-import React from 'react';
-import { Hospital } from '@/types';
+import React from "react";
+import { Hospital } from "@/types";
 interface HospitalListProps {
   hospitals: Hospital[];
 }
@@ -20,10 +19,7 @@ const HospitalList: React.FC<HospitalListProps> = ({ hospitals }) => {
             <li key={hospital.id}>
               <h3>{hospital.name}</h3>
               <p>
-                {hospital.address},
-                 {hospital.phone},
-                  {hospital.email}, 
-                  
+                {hospital.address},{hospital.phone_number},{hospital.email},
               </p>
             </li>
           ))}

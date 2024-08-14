@@ -4,15 +4,15 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAHpDqYhNoY010IlB0WPQO7J33RuiJuxh0",
-  authDomain: "my-carefinder-project-5fce2.firebaseapp.com",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   databaseURL:
     "https://my-carefinder-project-5fce2-default-rtdb.firebaseio.com",
-  projectId: "my-carefinder-project-5fce2",
-  storageBucket: "my-carefinder-project-5fce2.appspot.com",
-  messagingSenderId: "1011773149413",
-  appId: "1:1011773149413:web:bac34b6157ba8d8731840c",
-  measurementId: "G-Z5LT0YJMTH",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId:  process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID,
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();

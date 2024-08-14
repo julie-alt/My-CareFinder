@@ -5,7 +5,6 @@ const Contact: React.FC = () => {
   return (
     <Box padding="2rem">
       <Box
-        bg="gray.50"
         display="flex"
         alignItems="center"
         justifyContent="center"

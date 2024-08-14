@@ -6,10 +6,10 @@ const About: React.FC = () => {
     <Box>
       <Box
         id="about-us"
-        bgImage="linear-gradient(to bottom, rgba(230,230,230,0.5), rgba(230,230,230,0.5)),url('/Team.png')"
+       bgImage="linear-gradient(to bottom, rgba(230,230,230,0.5), rgba(230,230,230,0.5)),url('/Team.png')"
         bgPosition="center"
         bgSize="cover"
-        bgColor="rgba(0, 0, 0, 0.5)"
+         bgColor="rgba(0, 0, 0, 0.5)"
         bgBlendMode="overlay"
         height="100vh"
         display="flex"

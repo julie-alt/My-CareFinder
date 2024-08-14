@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SearchBar from "../Components/SearchBar";
-import HospitalList from "../Components/HospitalList";
-import ProtectedRoute from "../Components/ProtectedRoute";
+import SearchBar from "../src/Components/SearchBar";
+import HospitalList from "../src/Components/HospitalList";
+import ProtectedRoute from "../src/Components/ProtectedRoute";
 import { fetchHospitals } from "@/Utilities/mapApi";
 import { Hospital } from "@/types";
 

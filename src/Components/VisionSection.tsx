@@ -8,7 +8,7 @@ const Mission: React.FC = () => {
       <Box>
         <Box
           id="vision"
-          bgImage="linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('/Health Dice.png')"
+           bgImage="linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('/Health Dice.png')"
           bgPosition="center"
           bgSize="cover"
           bgColor="rgba(230, 230, 230, 0.5)"

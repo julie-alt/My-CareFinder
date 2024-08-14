@@ -1,13 +1,15 @@
 import React from "react";
-import { Box, Heading, Text, Image, List, ListItem } from "@chakra-ui/react";
+import { Box, Heading, Text, Image, List, ListItem, } from "@chakra-ui/react";
 import { FaHandsHelping } from "react-icons/fa";
+import theme from "@/theme";
 
 const Services: React.FC = () => {
+
   return (
     <Box>
       <Box
         id="services"
-        bg="linear-gradient(to right, #ffffff, #c7c3c3)"
+        bgGradient="linear(to-r, #ffffff, #c7c3c3)"
         py={10}
         px={5}
         textAlign="left"
@@ -26,7 +28,7 @@ const Services: React.FC = () => {
         </Box>
 
         {/* Right Content Section */}
-        <Box flex="1" pl={{ base: 0, md: 8 }} color="#2C2626">
+        <Box flex="1" pl={{ base: 0, md: 8 }} color="gray.900">
           <Heading as="h2" size="lg" mb={6}>
             <FaHandsHelping
               style={{ display: "inline-block", marginRight: "8px" }}

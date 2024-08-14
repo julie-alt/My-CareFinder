@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import ProtectedRoute from "../Components/ProtectedRoute";
+import ProtectedRoute from "../src/Components/ProtectedRoute";
 import axios from "axios";
-import { auth } from "../firebase";
-import ExportButton from "../Components/ExportButton";
-import ShareButton from "../Components/ShareButton";
+import { auth } from "../src/firebase";
+import ExportButton from "../src/Components/ExportButton";
+import ShareButton from "../src/Components/ShareButton";
 import { Hospital } from "@/types";
-import MarkdownEditor from "../Components/MarkdownEditor";
+import MarkdownEditor from "../src/Components/MarkdownEditor";
 import {
   ChakraProvider,
   Box,
@@ -26,13 +26,13 @@ import {
 } from "@chakra-ui/react";
 import { MdLocationOn, MdPhone } from "react-icons/md";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
-import theme from "../theme/index";
+import theme from "../src/theme/index";
 import Image from "next/image";
 import Link from "next/link";
 
 import { signOut } from "firebase/auth";
 
-import logo from "../assets/carefinder.png";
+import logo from "../src/assets/carefinder.png";
 
 const Header: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   const router = useRouter();

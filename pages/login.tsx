@@ -4,7 +4,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { auth, db } from "../firebase";
+import { auth, db } from "../src/firebase";
 import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import {
@@ -22,7 +22,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import theme from "../theme/index";
+import theme from "../src/theme/index";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");

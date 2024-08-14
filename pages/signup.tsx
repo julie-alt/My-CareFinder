@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/router";
 import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../firebase";
+import { auth, db } from "../src/firebase";
 import {
   ChakraProvider,
   Box,
@@ -22,7 +22,7 @@ import {
   Link,
   Icon,
 } from "@chakra-ui/react";
-import theme from "../theme/index";
+import theme from "../src/theme/index";
 import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp: React.FC = () => {

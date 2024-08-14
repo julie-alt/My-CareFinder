@@ -106,6 +106,9 @@ const Navbar: React.FC = () => {
                   Vision and Mission
                 </Button>
               </Link>
+              <Link href="#contact" passHref>
+                <Button variant="ghost">Contact Us</Button>
+              </Link>
               <Link href="/signup" passHref>
                 <Button colorScheme="gray" onClick={onClose}>
                   Sign Up

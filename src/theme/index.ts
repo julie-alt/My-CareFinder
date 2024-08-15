@@ -17,8 +17,8 @@ const theme = extendTheme({
    
   },
   fonts: {
-    heading: "Lora sans-serif",
-    body: "Poppins sans-serif",
+    heading: "Roboto, sans-serif",
+    body: "Roboto, sans-serif",
   },
 });
 

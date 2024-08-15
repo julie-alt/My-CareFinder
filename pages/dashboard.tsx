@@ -6,7 +6,7 @@ import { auth } from "../src/firebase";
 import ExportButton from "../src/Components/ExportButton";
 import ShareButton from "../src/Components/ShareButton";
 import { Hospital } from "@/types";
-import MarkdownEditor from "../src/Components/MarkdownEditor";
+import MarkdownEditor from "../src/Components/MarkdownEditor"
 import {
   ChakraProvider,
   Box,
@@ -34,7 +34,7 @@ import { signOut } from "firebase/auth";
 
 import logo from "../src/assets/carefinder.png";
 
-const Header: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
+const Header: React.FC<{ onLogout: () => void }> = ({onLogout}) => {
   const router = useRouter();
   const handleLogout = async () => {
     try {

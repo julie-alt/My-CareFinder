@@ -85,7 +85,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        // Assuming you're directly using data URL for simplicity
+       
         const imageUrl = reader.result as string;
         setContent(content + `\n\n![Image](${imageUrl})`);
       };

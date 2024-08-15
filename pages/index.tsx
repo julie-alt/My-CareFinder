@@ -14,7 +14,6 @@ const Home: React.FC = () => {
       <div>
         <ChakraProvider theme={theme}>
         <Navbar />
-
         <Header />
         <Services />
         <About />
